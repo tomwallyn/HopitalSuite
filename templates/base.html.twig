@@ -46,8 +46,8 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            {% for role in user.roles %}{% if role != "ROLE_INFIRMIER" %}
             <!-- Heading -->
+            {% for role in user.roles %}{% if role != "ROLE_INFIRMIER" and role != "ROLE_MALADE" and role != "ROLE_SECRETAIRE" %}
             <div class="sidebar-heading">
                 Outils
             </div>
@@ -75,7 +75,25 @@
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-            {% endif %}{% endfor %}
+            {% endif %}
+            {% if role == "ROLE_MALADE" %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('rdv_index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Consulter rdv</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('rdv_selectmedecin') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Demander rdv</span></a>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+            {% endif %}
+            {% endfor %}
+
+            
+
             <!-- Sidebar Message -->
             <div class="sidebar-card">
                 <a class="btn btn-success btn-sm" href="{{ path('app_logout') }}">Déconnexion</a>

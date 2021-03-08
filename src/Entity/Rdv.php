@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RdvRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RdvRepository::class)
@@ -18,8 +19,10 @@ class Rdv
     private $id;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="datetime", nullable=true, unique=true)
      */
+
+     
     private $Date;
 
     /**

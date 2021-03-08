@@ -36,12 +36,19 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/user, roles: ROLE_ADMIN }
-        - { path: ^/accueil, roles: ROLE_INFIRMIER }
+        - { path: ^/accueil, roles: [ROLE_INFIRMIER, ROLE_SECRETAIRE, ROLE_MALADE] }
+        - { path: ^/rdv/listmodif, roles: ROLE_SECRETAIRE }
+        - { path: ^/rdv/modif/, roles: ROLE_SECRETAIRE }
         - { path: ^/lit/, roles: ROLE_ADMINISTRATIF }
         - { path: ^/chambre/, roles: ROLE_ADMINISTRATIF }
         - { path: ^/sejour/, roles: ROLE_ADMINISTRATIF }
         - { path: ^/patient/, roles: ROLE_ADMINISTRATIF }
+        - { path: ^/rdv/, roles: ROLE_MALADE }
+        - { path: ^/rdv/new, roles: ROLE_MALADE }
+        - { path: ^/menupatient, roles: ROLE_MALADE }
+
 
     role_hierarchy:
         ROLE_ADMINISTRATIF: ROLE_INFIRMIER
         ROLE_ADMIN: ROLE_ADMINISTRATIF
+        ROLE_MEDECIN: ROLE_INFIRMIER
