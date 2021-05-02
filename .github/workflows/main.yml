@@ -15,4 +15,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd /var/www/html/HopitalSuite
-        sudo git pull
+          sudo git pull
