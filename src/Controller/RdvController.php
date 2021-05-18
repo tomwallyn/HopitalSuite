@@ -34,7 +34,7 @@ class RdvController extends AbstractController
     public function listmodif(RdvRepository $rdvRepository): Response
     {
         return $this->render('rdv/listmodif.html.twig', [
-            'rdvs' => $rdvRepository->findBy(array("IdPatient" => $this->getUser())),
+            'rdvs' => $rdvRepository->findAll(),
             'user' => $this->getUser()
         ]);
     }
